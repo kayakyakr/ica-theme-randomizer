@@ -1,74 +1,44 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+  <script>
+    $(function(){
+        $(document).on('click', '#theme-btn', function(){
+          var theme_list = [
+              ],
+              themes = [],
+              num_themes = parseInt($('#num-themes').value());
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Ica-theme-randomizer : " />
+          if(num_themes == NaN){
+            num_themes = 3;
+          }
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+          while(themes.length < theme_list.length && themes.length < num_themes){
+            var theme = theme_list[Math.floor((Math.random()*theme_list.length)];
+            if(themes.indexOf(theme) < 0){
+              themes.push(theme);
+            }
+          }
 
-    <title>Ica-theme-randomizer</title>
-  </head>
+          $('#theme-holder').clear();
+          for(var i = 0; i < themes.length; i++){
+            $('#theme-holder').append('<li>' + themes[i] + '</li>');
+          }
+        });
+      });
+  </script>
+</head>
+<body>
+  <h1>ICA Random Theme Picker</h1>
+  <div id="theme-btn" class="btn">Generate Themes</div>
+  <label>Number of themes (default 3)</label>
+  <input id="num-themes" type="text"/>
 
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/kayakyakr/ica-theme-randomizer">View on GitHub</a>
-
-          <h1 id="project_title">Ica-theme-randomizer</h1>
-          <h2 id="project_tagline"></h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/kayakyakr/ica-theme-randomizer/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/kayakyakr/ica-theme-randomizer/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Ica-theme-randomizer maintained by <a href="https://github.com/kayakyakr">kayakyakr</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
+  <h4>Your Themes:</h4>
+  <ol id="theme-holder">
+  </ol>
+</body>
 </html>
