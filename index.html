@@ -10,7 +10,7 @@
         $(document).on('click', '#theme-btn', function(){
           var theme_list = THEMES,
               themes = [],
-              num_themes = parseInt($('#num-themes').value());
+              num_themes = parseInt($('#num-themes').val());
 
           if(num_themes == NaN){
             num_themes = 3;
